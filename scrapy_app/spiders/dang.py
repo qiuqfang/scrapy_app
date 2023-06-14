@@ -8,6 +8,9 @@ class DangSpider(scrapy.Spider):
     allowed_domains = ["category.dangdang.com"]
     start_urls = ["https://category.dangdang.com/cp01.49.05.11.00.00.html"]
 
+    base_url = "https://category.dangdang.com/pg"
+    page = 1
+
     def parse(self, response):
         # pipelines 下载数据
         # items 定义数据结构
@@ -31,5 +34,12 @@ class DangSpider(scrapy.Spider):
 
             # 获取一个book就将book交给pipelines
             yield book
+
+        if self.page < 100:
+            self.page = self.page + 1
+            url = self.base_url + str(self.page) + "-cp01.49.05.11.00.00.html"
+
+            # 调用get方法
+            yield scrapy.Request(url, callback=self.parse)
 
         pass
