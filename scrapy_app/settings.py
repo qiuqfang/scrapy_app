@@ -65,7 +65,8 @@ DEFAULT_REQUEST_HEADERS = {
 ITEM_PIPELINES = {
     # 设置管道优先级（越小越大）
     "scrapy_app.pipelines.ScrapyAppPipeline": 300,
-    "scrapy_app.pipelines.DangDangDownloadPipeline": 301
+    "scrapy_app.pipelines.DangDangSavePipeline": 301,
+    "scrapy_app.pipelines.DangDangDownloadPipeline": 302
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
