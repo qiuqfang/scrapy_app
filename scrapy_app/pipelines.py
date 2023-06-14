@@ -8,6 +8,7 @@ import json
 from itemadapter import ItemAdapter
 
 from scrapy_app.utils import mkdir
+import urllib.request
 
 
 class ScrapyAppPipeline:
@@ -21,33 +22,58 @@ class ScrapyAppPipeline:
         print("ScrapyAppPipeline 结束")
 
 
-class DangDangSavePipeline:
+class ReadSavePipeline:
     def open_spider(self, spider):
-        mkdir('./books')
-        self.fp = open("./books/book.json", 'w', encoding='utf-8')
-        self.fp.write('[')
+        mkdir('./read')
+        self.fp = open("./read/book.csv", 'w', encoding='utf-8')
 
     def process_item(self, item, spider):
-        self.fp.write(str(item))
-        self.fp.write(',')
+        txt = str.format("{},{}\n", item['name'], item['src'])
+        self.fp.write(txt)
         return item
 
     def close_spider(self, spider):
-        self.fp.write(']')
         self.fp.close()
 
 
-import urllib.request
+class ReadDownloadPipeline:
+    def open_spider(self, spider):
+        mkdir('./read/img')
+        print("开始下载")
+
+    def process_item(self, item, spider):
+        url = item.get('src')
+        filename = "./read/img/" + item.get("name") + '.jpg'
+
+        urllib.request.urlretrieve(url, filename)
+        return item
+
+    def close_spider(self, spider):
+        print("结束下载")
 
 
-# 多条管道开启
+class DangDangSavePipeline:
+    def open_spider(self, spider):
+        mkdir('./dang')
+        self.fp = open("./dang/book.csv", 'w', encoding='utf-8')
+
+    def process_item(self, item, spider):
+        txt = str.format("{},{},{}\n", item['name'], item['src'], item["price"])
+        self.fp.write(txt)
+        return item
+
+    def close_spider(self, spider):
+        self.fp.close()
+
+
 class DangDangDownloadPipeline:
     def open_spider(self, spider):
+        mkdir('./dang/img')
         print("开始下载")
 
     def process_item(self, item, spider):
         url = "http:" + item.get('src')
-        filename = "./books/" + item.get("name") + '.jpg'
+        filename = "./dang/img/" + item.get("name") + '.jpg'
 
         urllib.request.urlretrieve(url, filename)
         return item

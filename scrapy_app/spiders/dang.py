@@ -1,6 +1,6 @@
 import scrapy
 
-from scrapy_app.items import ScrapyAppItem
+from scrapy_app.items import DangItem
 
 
 class DangSpider(scrapy.Spider):
@@ -30,7 +30,7 @@ class DangSpider(scrapy.Spider):
             name = li.xpath(".//img/@alt").extract_first()
             price = li.xpath(".//p[@class='price']/span[1]/text()").extract_first()
             print(src, name, price)
-            book = ScrapyAppItem(src=src, name=name, price=price)
+            book = DangItem(src=src, name=name, price=price)
 
             # 获取一个book就将book交给pipelines
             yield book
