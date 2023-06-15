@@ -22,6 +22,19 @@ class ScrapyAppPipeline:
         print("ScrapyAppPipeline 结束")
 
 
+class Bqg2Pipeline:
+    def open_spider(self, spider):
+        print("Bqg2Pipeline 开始")
+        mkdir('./bqg2')
+
+    def process_item(self, item, spider):
+        item["fp"].write(item['content'])
+        return item
+
+    def close_spider(self, spider):
+        print("Bqg2Pipeline 结束")
+
+
 class ReadSavePipeline:
     def open_spider(self, spider):
         mkdir('./read')

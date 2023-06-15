@@ -11,6 +11,12 @@ class ScrapyAppItem(scrapy.Item):
     name = scrapy.Field()
 
 
+class Bqg2Item(scrapy.Item):
+    # define the fields for your item here like:
+    content = scrapy.Field()
+    fp = scrapy.Field()
+
+
 class DangItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()

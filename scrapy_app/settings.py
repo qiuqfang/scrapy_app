@@ -64,7 +64,8 @@ DEFAULT_REQUEST_HEADERS = {
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     # 设置管道优先级（越小越大）
-    "scrapy_app.pipelines.ScrapyAppPipeline": 300,
+    # "scrapy_app.pipelines.ScrapyAppPipeline": 300,
+    "scrapy_app.pipelines.Bqg2Pipeline": 300,
     # "scrapy_app.pipelines.ReadSavePipeline": 300,
     # "scrapy_app.pipelines.ReadDownloadPipeline": 301,
     # "scrapy_app.pipelines.DangDangSavePipeline": 300,
