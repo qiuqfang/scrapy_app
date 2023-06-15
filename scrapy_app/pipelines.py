@@ -28,6 +28,7 @@ class Bqg2Pipeline:
         mkdir('./bqg2')
 
     def process_item(self, item, spider):
+        # txt = str.format("{},{}", str(item["chapter"] + 1), item['content'])
         item["fp"].write(item['content'])
         return item
 

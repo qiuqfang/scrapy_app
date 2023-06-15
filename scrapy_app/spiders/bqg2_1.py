@@ -15,7 +15,7 @@ class Bqg2_1Spider(scrapy.Spider):
     page = 1
     a_list = None
     a_list_len = 0
-    current_a = 2580
+    current_a = 2579
     fp = None
 
     def parse(self, response):
@@ -28,6 +28,7 @@ class Bqg2_1Spider(scrapy.Spider):
         self.page = 1
         url = self.base_url + self.base_href + "_" + str(self.page) + ".html"
         self.fp = open("./bqg2/book.csv", 'w', encoding='utf-8')
+        self.fp.write(str(self.current_a + 1) + ",")
         yield scrapy.Request(url, callback=self.other_parse)
         pass
 
@@ -50,8 +51,9 @@ class Bqg2_1Spider(scrapy.Spider):
             self.fp.write("\n")
             self.fp.close()
             if self.current_a < self.a_list_len - 1:
-                self.fp = open("./bqg2/book.csv", "a", encoding="utf-8")
                 self.current_a += 1
+                self.fp = open("./bqg2/book.csv", "a", encoding="utf-8")
+                self.fp.write(str(self.current_a + 1) + ",")
                 href = self.a_list[self.current_a].xpath("./@href").extract_first()
                 self.base_href = href[0:len(href) - 5]
                 self.page = 1
