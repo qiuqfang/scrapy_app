@@ -15,7 +15,7 @@ class Bqg2_1Spider(scrapy.Spider):
     page = 1
     a_list = None
     a_list_len = 0
-    current_a = 2579
+    current_a = 2400
     fp = None
 
     def parse(self, response):
