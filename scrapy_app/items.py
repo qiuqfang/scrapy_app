@@ -3,6 +3,8 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/items.html
 
+# 定义项目（items），也就是你从网站上爬取的数据的结构。通过定义一个或多个类，这些类表示你希望从网站上提取的数据的模型，每个类包含的字段（Field）对应你爬取的数据的不同属性。
+
 import scrapy
 
 

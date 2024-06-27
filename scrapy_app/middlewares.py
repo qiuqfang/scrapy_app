@@ -3,6 +3,14 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+# 定义和管理中间件（middlewares）。中间件是在 Scrapy 执行请求和处理响应的过程中，用于拦截和修改这些请求和响应的组件。中间件可以在多个阶段对请求和响应进行处理和修改，包括下载请求之前、下载响应之后等。
+#
+# Scrapy 中间件分为三种主要类型：
+#
+# Downloader Middlewares（下载器中间件）：这些中间件在 Scrapy 下载器（Downloader）处理 HTTP 请求和响应的过程中进行干预。可以用于修改请求、设置代理、处理重试逻辑等。
+# Spider Middlewares（爬虫中间件）：这些中间件在 Scrapy 爬虫（Spider）处理数据的过程中进行干预。可以用于修改爬虫生成的请求、处理爬虫返回的响应等。
+# Extensions（扩展中间件）：这些中间件用于扩展 Scrapy 框架的功能，例如统计信息、日志记录等。
+
 from scrapy import signals
 
 # useful for handling different item types with a single interface

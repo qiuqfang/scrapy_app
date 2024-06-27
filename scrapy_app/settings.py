@@ -7,6 +7,8 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+# 配置和管理 Scrapy 项目的各种设置。这个文件包含了一系列选项，用于控制 Scrapy 如何运行，包括爬虫的行为、请求的处理、扩展和中间件的配置、项目管道的设置等。
+
 BOT_NAME = "scrapy_app"
 
 SPIDER_MODULES = ["scrapy_app.spiders"]

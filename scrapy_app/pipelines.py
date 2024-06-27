@@ -2,6 +2,9 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+
+# 定义项目管道（Item Pipeline）。项目管道用于处理和存储爬取到的数据。在爬虫从网站上提取到数据（items）后，这些数据会被传递到项目管道进行进一步处理，如清理、验证、存储到数据库或文件等。
+
 import json
 
 # useful for handling different item types with a single interface
