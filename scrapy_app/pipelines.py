@@ -31,7 +31,6 @@ class Bqg2Pipeline:
         mkdir('./bqg2')
 
     def process_item(self, item, spider):
-        # txt = str.format("{},{}", str(item["chapter"] + 1), item['content'])
         item["fp"].write(item['content'])
         return item
 
@@ -69,6 +68,7 @@ class ReadDownloadPipeline:
         print("结束下载")
 
 
+# 保存当当书籍数据管道
 class DangDangSavePipeline:
     def open_spider(self, spider):
         mkdir('./dang')
@@ -83,6 +83,7 @@ class DangDangSavePipeline:
         self.fp.close()
 
 
+# 下载书籍图片管道
 class DangDangDownloadPipeline:
     def open_spider(self, spider):
         mkdir('./dang/img')

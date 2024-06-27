@@ -71,7 +71,7 @@ ITEM_PIPELINES = {
     # "scrapy_app.pipelines.ReadSavePipeline": 300,
     # "scrapy_app.pipelines.ReadDownloadPipeline": 301,
     "scrapy_app.pipelines.DangDangSavePipeline": 300,
-    # "scrapy_app.pipelines.DangDangDownloadPipeline": 301
+    "scrapy_app.pipelines.DangDangDownloadPipeline": 301
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
