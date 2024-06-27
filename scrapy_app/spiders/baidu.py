@@ -9,7 +9,7 @@ class BaiduSpider(scrapy.Spider):
     # 起始的url地址
     start_urls = ["https://www.baidu.com"]
 
-    def parse(self, response):
+    def parse(self, response, **kwargs):
         names = response.xpath("//div[@id='s-top-left']/a/text()")
         print(names.extract_first())
         for name in names:

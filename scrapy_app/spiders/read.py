@@ -10,10 +10,9 @@ class ReadSpider(CrawlSpider):
     allowed_domains = ["www.dushu.com"]
     start_urls = ["https://www.dushu.com/book/1078_1.html"]
 
-    rules = (Rule(LinkExtractor(allow=r"/book/1078_\d+\.html"), callback="parse_item", follow=True),)
+    rules = (Rule(LinkExtractor(allow=r"/book/1078_\d+\.html"), follow=True),)
 
-    # 默认走 parse 否则要指定 callback
-    def parse_item(self, response):
+    def parse(self, response, **kwargs):
         img_list = response.xpath("//div[@class='bookslist']//img")
         for img in img_list:
             src = img.xpath("./@data-original").extract_first()

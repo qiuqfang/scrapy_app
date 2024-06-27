@@ -19,7 +19,7 @@ class Bqg2Spider(scrapy.Spider):
     fp = None
     all_page = None
 
-    def parse(self, response):
+    def parse(self, response, **kwargs):
         self.a_list = response.xpath("//div[@class='ml_list']//li/a")
         self.a_list_len = len(self.a_list)
         print(self.a_list_len)

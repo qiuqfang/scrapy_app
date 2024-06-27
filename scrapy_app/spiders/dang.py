@@ -11,7 +11,7 @@ class DangSpider(scrapy.Spider):
     base_url = "https://category.dangdang.com/pg"
     page = 1
 
-    def parse(self, response):
+    def parse(self, response, **kwargs):
         # pipelines 下载数据
         # items 定义数据结构
 
