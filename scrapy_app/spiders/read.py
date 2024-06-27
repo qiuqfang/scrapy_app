@@ -12,6 +12,7 @@ class ReadSpider(CrawlSpider):
 
     rules = (Rule(LinkExtractor(allow=r"/book/1078_\d+\.html"), callback="parse_item", follow=True),)
 
+    # 默认走 parse 否则要指定 callback
     def parse_item(self, response):
         img_list = response.xpath("//div[@class='bookslist']//img")
         for img in img_list:
