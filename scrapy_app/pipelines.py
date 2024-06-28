@@ -13,6 +13,8 @@ from itemadapter import ItemAdapter
 from scrapy_app.utils import mkdir
 import urllib.request
 
+from openpyxl import Workbook
+
 
 class ScrapyAppPipeline:
     def open_spider(self, spider):
@@ -81,6 +83,25 @@ class DangDangSavePipeline:
 
     def close_spider(self, spider):
         self.fp.close()
+
+
+# 保存当当数据到execl
+class DangDangSaveExeclPipeline:
+    def __init__(self):
+        self.wb = Workbook()
+        self.ws = self.wb.active
+        self.ws.append(['书名', '价格', '图片'])
+        self.file_name = "./dang/book.xlsx"
+
+    def process_item(self, item, spider):
+        line = [item['name'], item['price'], item['src']]
+        self.ws.append(line)
+        self.wb.save(self.file_name)
+        return item
+
+    def close_spider(self, spider):
+        # 关闭
+        self.wb.close()
 
 
 # 下载书籍图片管道
